@@ -7,7 +7,7 @@ const niniosHTML = document.getElementById("ninios");
 const entradaHTML = document.getElementById("entrada");
 const salidaHTML = document.getElementById("salida");
 const entrada = new Date()
-let errorDatos = ""
+let errorDatos = true
 
 // Texto descriptivo en el campo nombre
 nombreHTML.setAttribute("placeholder", "Escribe tu nombre")
@@ -23,7 +23,7 @@ nombreHTML.addEventListener("change", () => {
         document.getElementById("errorNombre").textContent = ""
         nombreHTML.value = ""
     });
-    errorDatos = "Hay que introducir un nombre valido";
+    errorDatos = false
   }
 });
 nombreHTML.addEventListener('focusout', () => {
@@ -41,7 +41,7 @@ apellidoHTML.addEventListener("change", () => {
         document.getElementById("errorApellido").textContent = ""
         apellidoHTML.value = ""
     });
-    errorDatos = "Hay que introducir un texto de al menos dos caracteres";
+    errorDatos = false
   }
 });
 
@@ -74,6 +74,8 @@ const ventanaReserva = document.getElementById('ventanaReserva')
 // Formulario
 formReserva.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  if(!errorDatos) return
     // formReserva["nombre"].value;
     // formReserva["apellido"].value;
     // formReserva["adultos"].value;
