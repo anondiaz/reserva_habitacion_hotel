@@ -7,6 +7,7 @@ const niniosHTML = document.getElementById("ninios");
 const entradaHTML = document.getElementById("entrada");
 const salidaHTML = document.getElementById("salida");
 const entrada = new Date()
+let errorDatos = ""
 
 // Texto descriptivo en el campo nombre
 nombreHTML.setAttribute("placeholder", "Escribe tu nombre")
@@ -18,7 +19,15 @@ nombreHTML.addEventListener("change", () => {
   if (nombre.length < 2) {
     document.getElementById("errorNombre").textContent =
       "Hay que introducir un nombre valido";
+    nombreHTML.addEventListener('focusin', () => {
+        document.getElementById("errorNombre").textContent = ""
+        nombreHTML.value = ""
+    });
+    errorDatos = "Hay que introducir un nombre valido";
   }
+});
+nombreHTML.addEventListener('focusout', () => {
+    nombreHTML.value = nombreHTML.value.trim();
 });
 
 // mensaje de error en caso de que se escriba mal
@@ -28,6 +37,11 @@ apellidoHTML.addEventListener("change", () => {
   if (apellido.length < 2) {
     document.getElementById("errorApellido").textContent =
       "Hay que introducir un texto de al menos dos caracteres";
+    apellidoHTML.addEventListener('focusin', () => {
+        document.getElementById("errorApellido").textContent = ""
+        apellidoHTML.value = ""
+    });
+    errorDatos = "Hay que introducir un texto de al menos dos caracteres";
   }
 });
 
@@ -67,7 +81,13 @@ formReserva.addEventListener("submit", (e) => {
     // formReserva["entrada"].value;
     // formReserva["salida"].value;
     // console.log(`Hola ${nombre} ${apellido}, has hecho una reserva para ${adultos} adultos y ${ninios} niños, con fecha de entrada ${entrada} y fecha de salida ${salida}`);
-ventanaReserva.showModal()
+    let resumenReservaDialog = `<p>Reserva realizada a nombre de : <span>${formReserva['nombre'].value} ${formReserva['apellido'].value}</span></p>`;
+    resumenReservaDialog += `<p>Adultos :<span>${formReserva['adultos'].value}</span> - Niños :<span>${formReserva['ninios'].value}</span></p>`;
+    resumenReservaDialog += `<p>Fecha de entrada :<span>${formReserva['entrada'].value}</span></p>`;
+    resumenReservaDialog += `<p>Fecha de salida :<span>${formReserva['salida'].value}</span></p>`;
+    resumenReservaDialog += `<p>Regimen de estancia :<span>${formReserva['estancia'].value}</span></p>`;
+    document.getElementById('resumenReserva').innerHTML = resumenReservaDialog
+    ventanaReserva.showModal()
 
 });
 

@@ -25,6 +25,10 @@ fieldset {
     input {
         border-radius: 5px;
         padding: .5rem 1rem;
+
+        &:focus {
+            background-color: aqua;
+        }
     }
     p {
         margin-top: .5rem;
@@ -84,13 +88,25 @@ button:hover {
     margin: auto;
     background-color:aliceblue;
     border: 1px solid black;
-    border-radius: 5px 10px;
+    border-radius: 5px 15px;
     padding: 2rem;
     text-align: center;
     h2 {
         border-bottom: 2px solid brown;
         padding-bottom: 1rem;
         margin-bottom: 3rem;
+    }
+    p {
+        font-size: 1.2rem;
+        margin: 1rem 0;
+        color: gray;
+    }
+    form {
+        border-top: 2px solid brown;
+    }
+    span {
+        color:black;
+        font-weight: bold;
     }
     button {
         padding: 10px 20px;
