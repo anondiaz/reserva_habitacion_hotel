@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de reserva</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/script.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Reserva de habitación de hotel</h1>
+    </header>
+    <main>
+      <form name="formReserva">
+        <fieldset class="personales">
+          <legend>Datos personales</legend>
+          <div>
+            <label for="nombre">* Nombre :</label>
+            <input
+              type="text"
+              name="nombre"
+              id="nombre"
+              autofocus
+              pattern="[A-Za-z]{2,}"
+            />
+            <p id="errorNombre"></p>
+          </div>
+          <div>
+            <label for="apellido">* Apellido/s :</label>
+            <input
+              type="text"
+              name="apellido"
+              id="apellido"
+              pattern="[A-Za-z]{2,}"
+            />
+          </div>
+          <p id="errorApellido"></p>
+        </fieldset>
+        <fieldset class="reserva">
+          <legend>Datos de la reserva</legend>
+          <div>
+            <label for="adultos">Adultos :</label
+            ><input
+              type="number"
+              name="adultos"
+              id="adultos"
+              min="1"
+              max="3"
+              value="2"
+            />
+          </div>
+          <div>
+            <label for="ninios">Niños :</label
+            ><input
+              type="number"
+              name="ninios"
+              id="ninios"
+              min="0"
+              max="3"
+              value="0"
+            />
+          </div>
+          <div>
+            <label for="entrada">Entrada :</label
+            ><input type="date" name="entrada" id="entrada" required />
+          </div>
+          <div>
+            <label for="salida">Salida :</label
+            ><input type="date" name="salida" id="salida" required />
+          </div>
+        </fieldset>
+        <fieldset class="estancia">
+          <legend>Tipo de estancia</legend>
+          <div>
+            <input
+              type="radio"
+              name="estancia"
+              value="alojamiento"
+              id="alojamiento"
+              checked
+            />
+            <label for="alojamiento"> Solo alojamiento </label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="estancia"
+              value="desayuno"
+              id="desayuno"
+            />
+            <label for="desayuno"> Desayuno incluido </label>
+          </div>
+          <div>
+            <input type="radio" name="estancia" value="media" id="media" />
+            <label for="media"> Media pensión </label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="estancia"
+              value="completa"
+              id="completa"
+            />
+            <label for="completa"> Pensión completa </label>
+          </div>
+        </fieldset>
+        <div class="buttons">
+          <button type="submit" id="reservar">Reservar</button>
+          <button type="reset" id="cancelar">Cancelar</button>
+        </div>
+      </form>
+      <dialog id="ventanaReserva" closedby="any">
+        <h2>Resumen de la reserva</h2>
+        <div id="resumenReserva"></div>
+        <form method="dialog">
+          <div>
+            <button id="cerrarDialog">Aceptar</button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+  </body>
+</html>
